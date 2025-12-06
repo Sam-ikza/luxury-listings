@@ -106,31 +106,6 @@ const properties = [
   }
 ];
 
-/* =================================================
-   THEME (simple toggle stored in localStorage)
-   ================================================= */
-const themeToggleButtons = document.querySelectorAll("#themeToggle, #themeToggle2, #themeToggle3, #themeToggle4, #themeToggle5");
-function applyTheme(theme){
-  if(theme === "light"){
-    document.documentElement.style.setProperty('--bg','linear-gradient(180deg,#f5f5f5 0%, #efefef 100%)');
-    document.documentElement.style.setProperty('--gold','#b5882d');
-    document.body.classList.remove('luxury');
-  } else {
-    // reset to luxury dark (default)
-    document.documentElement.style.setProperty('--bg','linear-gradient(180deg,#050506 0%, #0b0b0d 100%)');
-    document.documentElement.style.setProperty('--gold','#d4af37');
-    document.body.classList.add('luxury');
-  }
-}
-const savedTheme = localStorage.getItem('luxury-theme') || 'dark';
-applyTheme(savedTheme);
-themeToggleButtons.forEach(btn=>{
-  btn && btn.addEventListener && btn.addEventListener('click', () => {
-    const newTheme = document.body.classList.contains('luxury') ? 'light' : 'dark';
-    applyTheme(newTheme);
-    localStorage.setItem('luxury-theme', newTheme);
-  });
-});
 
 /* =================================================
    HERO: slideshow + parallax
